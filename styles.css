@@ -13,6 +13,54 @@ body {
     padding: 0;
 }
 
+/* GitHub Banner */
+.github-fork-ribbon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 0 8px;
+    transition: background-color 0.3s ease;
+}
+
+.github-fork-ribbon:hover {
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
+.github-fork-ribbon-text {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.github-fork-ribbon-text::before {
+    content: "🚀";
+    font-size: 14px;
+}
+
+/* Responsive adjustments for GitHub banner */
+@media (max-width: 768px) {
+    .github-fork-ribbon {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+    
+    .github-fork-ribbon-text::before {
+        font-size: 12px;
+    }
+}
+
 .container {
     max-width: 1000px;
     margin: 0 auto;

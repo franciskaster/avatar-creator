@@ -2,6 +2,8 @@
 
 A modern and interactive avatar generator that creates custom avatars with letters, colors and predefined palettes.
 
+🔗 **GitHub Repository**: [https://github.com/franciskaster/avatar-creator](https://github.com/franciskaster/avatar-creator)
+
 ## ✨ Features
 
 - **Avatar Generation**: Create avatars with individual letters (A-Z) or double letters (AA-ZZ)

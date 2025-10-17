@@ -1,0 +1,39 @@
+{
+  "name": "avatar-generator",
+  "version": "1.0.0",
+  "description": "Um gerador de avatares moderno e interativo que cria avatares personalizados com letras, cores e paletas predefinidas",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "dev": "npx live-server --port=3000"
+  },
+  "keywords": [
+    "avatar",
+    "generator",
+    "svg",
+    "png",
+    "javascript",
+    "html5",
+    "css3",
+    "zip",
+    "download"
+  ],
+  "author": "Avatar Generator Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/avatar-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seu-usuario/avatar-generator/issues"
+  },
+  "homepage": "https://seu-usuario.github.io/avatar-generator",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

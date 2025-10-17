@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Avatares</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&family=Ubuntu:wght@300;400;500;700&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Merriweather:wght@300;400;700&family=PT+Sans:wght@400;700&family=PT+Serif:wght@400;700&family=Raleway:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&family=Quicksand:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&family=Inconsolata:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Crimson+Text:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Crimson+Pro:wght@300;400;500;600;700&family=Libre+Franklin:wght@300;400;500;600;700&family=Karla:wght@300;400;500;600;700&family=Archivo:wght@300;400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&family=Archivo+Black:wght@400&family=Anton:wght@400&family=Bebas+Neue:wght@400&family=Fredoka+One:wght@400&family=Righteous:wght@400&family=Orbitron:wght@400;500;600;700;800;900&family=Audiowide:wght@400&family=Black+Ops+One:wght@400&family=Creepster:wght@400&family=Fascinate:wght@400&family=Fascinate+Inline:wght@400&family=Flavors:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Gravitas+One:wght@400&family=Kalam:wght@300;400;700&family=Lobster:wght@400&family=Lobster+Two:wght@400;700&family=Monoton:wght@400&family=Pacifico:wght@400&family=Permanent+Marker:wght@400&family=Press+Start+2P:wght@400&family=Rubik+Beastly:wght@400&family=Rubik+Glitch:wght@400&family=Rubik+Wet+Paint:wght@400&family=Rubik+Moonrocks:wght@400&family=Rubik+Distressed:wght@400&family=Rubik+Marker+Hatch:wght@400&family=Rubik+Vinyl:wght@400&family=Rubik+Microbe:wght@400&family=Rubik+80s+Fade:wght@400&family=Rubik+Gemstones:wght@400&family=Rubik+Storm:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gerador de Avatares</h1>
+            <p>Crie avatares personalizados com letras e cores únicas</p>
+        </header>
+
+        <main>
+            <div class="controls-panel">
+                <div class="control-group">
+                    <label>Faixa de Avatares:</label>
+                    <div class="range-options">
+                        <label class="radio-option">
+                            <input type="radio" name="range" value="single" checked>
+                            <span>Letra única (A-Z)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="range" value="double">
+                            <span>Letras duplas (AA-ZZ)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="range" value="both">
+                            <span>Todos (A-Z + AA-ZZ)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="text-input">Preview Individual (opcional):</label>
+                    <input type="text" id="text-input" placeholder="Digite A-Z ou AA-ZZ" maxlength="2">
+                </div>
+
+                <div class="control-group">
+                    <label>Paletas de Cores:</label>
+                    <div class="palette-grid" id="palette-grid">
+                        <!-- Paletas serão carregadas via JavaScript -->
+                    </div>
+                    
+                    <button id="create-palette-btn" class="btn btn-secondary" style="margin-top: 15px; width: 100%;">
+                        Criar Nova Paleta
+                    </button>
+                </div>
+
+                <!-- Modal de Criação/Edição de Paletas -->
+                <div class="modal-overlay" id="palette-modal" style="display: none;">
+                    <div class="modal-container">
+                        <div class="modal-header">
+                            <h3 id="palette-creator-title">Criar Nova Paleta</h3>
+                            <button id="close-palette-creator" class="modal-close-btn">×</button>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <div class="input-group">
+                                <label for="palette-name">Nome da Paleta</label>
+                                <input type="text" id="palette-name" placeholder="Digite o nome da sua paleta" maxlength="20">
+                            </div>
+                            
+                            <div class="colors-container">
+                                <div class="colors-header">
+                                    <h4>Combinações de Cores</h4>
+                                </div>
+                                <div class="color-inputs" id="color-inputs">
+                                    <!-- Color inputs will be added here -->
+                                </div>
+                                <button id="add-color-btn" class="add-color-btn">
+                                    <span>+</span> Adicionar Cor
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button id="cancel-palette-btn" class="btn btn-secondary">Cancelar</button>
+                            <button id="save-palette-btn" class="btn btn-primary">Salvar Paleta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="shape-select">Formato:</label>
+                    <select id="shape-select">
+                        <option value="circle" selected>Redondo</option>
+                        <option value="square">Quadrado</option>
+                        <option value="rounded">Quadrado Arredondado</option>
+                        <option value="diamond">Diamante</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Borda:</label>
+                    <div class="effects-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="border-enabled">
+                            <span>Ativar Borda</span>
+                        </label>
+                    </div>
+                    
+                    <div class="effect-controls" id="border-controls" style="display: none;">
+                        <div class="effect-row">
+                            <label for="border-width">Espessura:</label>
+                            <input type="range" id="border-width" min="1" max="20" value="3">
+                            <span id="border-width-value">3px</span>
+                        </div>
+                        <div class="effect-row">
+                            <label for="border-color">Cor:</label>
+                            <input type="color" id="border-color" value="#000000">
+                        </div>
+                        <div class="effect-row">
+                            <label for="border-style">Estilo:</label>
+                            <select id="border-style">
+                                <option value="solid">Sólida</option>
+                                <option value="dashed">Tracejada</option>
+                                <option value="dotted">Pontilhada</option>
+                                <option value="double">Dupla</option>
+                            </select>
+                        </div>
+                        <div class="effect-row">
+                            <label for="border-opacity">Opacidade:</label>
+                            <input type="range" id="border-opacity" min="0" max="100" value="100">
+                            <span id="border-opacity-value">100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="size-select">Tamanho:</label>
+                    <select id="size-select">
+                        <option value="64">64x64px</option>
+                        <option value="128" selected>128x128px</option>
+                        <option value="256">256x256px</option>
+                        <option value="512">512x512px</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="font-select">Fonte:</label>
+                    <select id="font-select">
+                        <optgroup label="Sans Serif Modernas">
+                            <option value="Inter" selected>Inter (Padrão)</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="Open Sans">Open Sans</option>
+                            <option value="Lato">Lato</option>
+                            <option value="Montserrat">Montserrat</option>
+                            <option value="Poppins">Poppins</option>
+                            <option value="Source Sans Pro">Source Sans Pro</option>
+                            <option value="Ubuntu">Ubuntu</option>
+                            <option value="Raleway">Raleway</option>
+                            <option value="Work Sans">Work Sans</option>
+                            <option value="Nunito">Nunito</option>
+                            <option value="Quicksand">Quicksand</option>
+                            <option value="Rubik">Rubik</option>
+                            <option value="DM Sans">DM Sans</option>
+                            <option value="Space Grotesk">Space Grotesk</option>
+                            <option value="Libre Franklin">Libre Franklin</option>
+                            <option value="Karla">Karla</option>
+                            <option value="Archivo">Archivo</option>
+                            <option value="Archivo Narrow">Archivo Narrow</option>
+                            <option value="IBM Plex Sans">IBM Plex Sans</option>
+                        </optgroup>
+                        <optgroup label="Serif Elegantes">
+                            <option value="Playfair Display">Playfair Display</option>
+                            <option value="Merriweather">Merriweather</option>
+                            <option value="PT Serif">PT Serif</option>
+                            <option value="Libre Baskerville">Libre Baskerville</option>
+                            <option value="Crimson Text">Crimson Text</option>
+                            <option value="Lora">Lora</option>
+                            <option value="Crimson Pro">Crimson Pro</option>
+                            <option value="IBM Plex Serif">IBM Plex Serif</option>
+                        </optgroup>
+                        <optgroup label="Monospace">
+                            <option value="Space Mono">Space Mono</option>
+                            <option value="JetBrains Mono">JetBrains Mono</option>
+                            <option value="Fira Code">Fira Code</option>
+                            <option value="Source Code Pro">Source Code Pro</option>
+                            <option value="Inconsolata">Inconsolata</option>
+                            <option value="IBM Plex Mono">IBM Plex Mono</option>
+                        </optgroup>
+                        <optgroup label="Decorativas">
+                            <option value="Oswald">Oswald</option>
+                            <option value="Anton">Anton</option>
+                            <option value="Bebas Neue">Bebas Neue</option>
+                            <option value="Fredoka One">Fredoka One</option>
+                            <option value="Righteous">Righteous</option>
+                            <option value="Orbitron">Orbitron</option>
+                            <option value="Audiowide">Audiowide</option>
+                            <option value="Black Ops One">Black Ops One</option>
+                            <option value="Creepster">Creepster</option>
+                            <option value="Fascinate">Fascinate</option>
+                            <option value="Fascinate Inline">Fascinate Inline</option>
+                            <option value="Flavors">Flavors</option>
+                            <option value="Fredoka">Fredoka</option>
+                            <option value="Gravitas One">Gravitas One</option>
+                            <option value="Kalam">Kalam</option>
+                            <option value="Lobster">Lobster</option>
+                            <option value="Lobster Two">Lobster Two</option>
+                            <option value="Monoton">Monoton</option>
+                            <option value="Pacifico">Pacifico</option>
+                            <option value="Permanent Marker">Permanent Marker</option>
+                            <option value="Press Start 2P">Press Start 2P</option>
+                            <option value="Archivo Black">Archivo Black</option>
+                        </optgroup>
+                        <optgroup label="Sistema">
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Palatino">Palatino</option>
+                            <option value="Garamond">Garamond</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Formato de Download:</label>
+                    <div class="format-options">
+                        <label class="radio-option">
+                            <input type="radio" name="download-format" value="png" checked>
+                            <span>PNG</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="download-format" value="svg">
+                            <span>SVG</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="generate-all-btn" class="btn btn-primary">Gerar Todos os Avatares</button>
+                    <button id="download-single" class="btn btn-secondary">Baixar Preview</button>
+                    <button id="download-zip" class="btn btn-success">Baixar ZIP Completo</button>
+                </div>
+
+                <div class="progress-section" id="progress-section" style="display: none;">
+                    <div class="progress-info">
+                        <span id="progress-text">Gerando avatares...</span>
+                        <span id="progress-count">0/0</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <h3>Preview do Avatar</h3>
+                <div class="avatar-preview" id="avatar-preview">
+                    <svg id="avatar-svg" width="256" height="256" viewBox="0 0 256 256">
+                        <rect fill="#f39c12" width="256" height="256" cx="128" cy="128" r="128"></rect>
+                        <text x="50%" y="50%" style="color: #ffffff;line-height: 1;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;" alignment-baseline="middle" text-anchor="middle" font-size="102" font-weight="400" dy=".1em" dominant-baseline="middle" fill="#ffffff">A</text>
+                    </svg>
+                </div>
+                <button id="regenerate-preview-btn" class="btn btn-secondary" style="margin-top: 15px; width: 100%;">
+                    Nova Cor para Preview
+                </button>
+            </div>
+        </main>
+
+        <div class="generated-avatars" id="generated-avatars" style="display: none;">
+            <h3>Avatares Gerados</h3>
+            <div class="avatars-grid" id="avatars-grid"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

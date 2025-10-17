@@ -1,84 +1,84 @@
-# 🎨 Gerador de Avatares
+# 🎨 Avatar Generator
 
-Um gerador de avatares moderno e interativo que cria avatares personalizados com letras, cores e paletas predefinidas.
+A modern and interactive avatar generator that creates custom avatars with letters, colors and predefined palettes.
 
-## ✨ Funcionalidades
+## ✨ Features
 
-- **Geração de Avatares**: Crie avatares com letras individuais (A-Z) ou duplas (AA-ZZ)
-- **Cores Personalizáveis**: Escolha cores de fundo e texto personalizadas
-- **Paletas Predefinidas**: 6 paletas de cores prontas para uso
-- **Múltiplos Tamanhos**: 64x64px, 128x128px, 256x256px, 512x512px
-- **Preview em Tempo Real**: Veja o avatar sendo gerado instantaneamente
-- **Download Individual**: Baixe avatares como PNG
-- **Download em Lote**: Baixe múltiplos avatares em um arquivo ZIP
-- **Interface Responsiva**: Funciona perfeitamente em desktop e mobile
+- **Avatar Generation**: Create avatars with individual letters (A-Z) or double letters (AA-ZZ)
+- **Customizable Colors**: Choose custom background and text colors
+- **Predefined Palettes**: 6 ready-to-use color palettes
+- **Multiple Sizes**: 64x64px, 128x128px, 256x256px, 512x512px
+- **Real-time Preview**: See the avatar being generated instantly
+- **Individual Download**: Download avatars as PNG
+- **Batch Download**: Download multiple avatars in a ZIP file
+- **Responsive Interface**: Works perfectly on desktop and mobile
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-1. **Abra o arquivo `index.html`** no seu navegador
-2. **Digite o texto** do avatar (A-Z ou AA-ZZ)
-3. **Escolha as cores** usando os seletores ou paletas predefinidas
-4. **Selecione o tamanho** desejado
-5. **Clique em "Gerar Avatar"** para adicionar à lista
-6. **Baixe individualmente** ou **em lote como ZIP**
+1. **Open the `index.html` file** in your browser
+2. **Type the avatar text** (A-Z or AA-ZZ)
+3. **Choose colors** using the selectors or predefined palettes
+4. **Select the desired size**
+5. **Click "Generate Avatar"** to add to the list
+6. **Download individually** or **in batch as ZIP**
 
-## 🎯 Exemplos de Uso
+## 🎯 Usage Examples
 
-- **Iniciais de nomes**: A, B, C, etc.
-- **Iniciais duplas**: AA, BB, CC, etc.
-- **Códigos de equipe**: TM, DEV, UX, etc.
-- **Marcas**: LG, HP, etc.
+- **Name initials**: A, B, C, etc.
+- **Double initials**: AA, BB, CC, etc.
+- **Team codes**: TM, DEV, UX, etc.
+- **Brands**: LG, HP, etc.
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
-- **HTML5**: Estrutura semântica
-- **CSS3**: Design moderno com gradientes e animações
-- **JavaScript ES6+**: Lógica interativa
-- **SVG**: Geração de avatares vetoriais
-- **JSZip**: Criação de arquivos ZIP
-- **Canvas API**: Conversão SVG para PNG
+- **HTML5**: Semantic structure
+- **CSS3**: Modern design with gradients and animations
+- **JavaScript ES6+**: Interactive logic
+- **SVG**: Vector avatar generation
+- **JSZip**: ZIP file creation
+- **Canvas API**: SVG to PNG conversion
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 avatar-creator/
-├── index.html          # Página principal
-├── styles.css          # Estilos CSS
-├── script.js           # Lógica JavaScript
-└── README.md           # Documentação
+├── index.html          # Main page
+├── styles.css          # CSS styles
+├── script.js           # JavaScript logic
+└── README.md           # Documentation
 ```
 
-## 🎨 Paletas de Cores Disponíveis
+## 🎨 Available Color Palettes
 
-- **Laranja**: #f39c12 com texto branco
-- **Azul**: #3498db com texto branco
-- **Vermelho**: #e74c3c com texto branco
-- **Verde**: #2ecc71 com texto branco
-- **Roxo**: #9b59b6 com texto branco
-- **Cinza**: #34495e com texto branco
+- **Orange**: #f39c12 with white text
+- **Blue**: #3498db with white text
+- **Red**: #e74c3c with white text
+- **Green**: #2ecc71 with white text
+- **Purple**: #9b59b6 with white text
+- **Gray**: #34495e with white text
 
-## 🔧 Personalização
+## 🔧 Customization
 
-### Adicionando Novas Paletas
+### Adding New Palettes
 
-Para adicionar novas paletas, edite o arquivo `index.html` na seção `.palette-grid`:
+To add new palettes, edit the `index.html` file in the `.palette-grid` section:
 
 ```html
-<div class="palette" data-bg="#sua-cor" data-text="#cor-do-texto">
-    <div class="palette-color" style="background: #sua-cor;"></div>
-    <span>Nome da Paleta</span>
+<div class="palette" data-bg="#your-color" data-text="#text-color">
+    <div class="palette-color" style="background: #your-color;"></div>
+    <span>Palette Name</span>
 </div>
 ```
 
-### Modificando Tamanhos
+### Modifying Sizes
 
-Para adicionar novos tamanhos, edite o arquivo `index.html` na seção `#size-select`:
+To add new sizes, edit the `index.html` file in the `#size-select` section:
 
 ```html
 <option value="1024">1024x1024px</option>
 ```
 
-## 🌐 Compatibilidade
+## 🌐 Compatibility
 
 - ✅ Chrome 60+
 - ✅ Firefox 55+
@@ -86,41 +86,41 @@ Para adicionar novos tamanhos, edite o arquivo `index.html` na seção `#size-se
 - ✅ Edge 79+
 - ✅ Mobile browsers
 
-## 📱 Responsividade
+## 📱 Responsiveness
 
-O projeto é totalmente responsivo e funciona perfeitamente em:
+The project is fully responsive and works perfectly on:
 - Desktop (1200px+)
 - Tablet (768px - 1199px)
-- Mobile (até 767px)
+- Mobile (up to 767px)
 
 ## 🚀 Deploy
 
-Para fazer deploy do projeto:
+To deploy the project:
 
-1. **GitHub Pages**: Faça upload dos arquivos para um repositório e ative o GitHub Pages
-2. **Netlify**: Arraste a pasta do projeto para o Netlify
-3. **Vercel**: Conecte o repositório ao Vercel
-4. **Servidor Local**: Abra o `index.html` diretamente no navegador
+1. **GitHub Pages**: Upload the files to a repository and enable GitHub Pages
+2. **Netlify**: Drag the project folder to Netlify
+3. **Vercel**: Connect the repository to Vercel
+4. **Local Server**: Open `index.html` directly in the browser
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
+Contributions are welcome! Feel free to:
 
-1. Fazer fork do projeto
-2. Criar uma branch para sua feature
-3. Fazer commit das mudanças
-4. Abrir um Pull Request
+1. Fork the project
+2. Create a branch for your feature
+3. Commit your changes
+4. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+This project is under the MIT license. See the `LICENSE` file for more details.
 
-## 🎉 Agradecimentos
+## 🎉 Acknowledgments
 
-- Fontes do Google Fonts (Inter)
-- Biblioteca JSZip para criação de arquivos ZIP
-- Comunidade de desenvolvedores por inspiração
+- Google Fonts (Inter)
+- JSZip library for ZIP file creation
+- Developer community for inspiration
 
 ---
 
-**Desenvolvido com ❤️ para criar avatares incríveis!**
+**Developed with ❤️ to create amazing avatars!**

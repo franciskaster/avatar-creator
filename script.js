@@ -324,7 +324,7 @@ class AvatarGenerator {
     loadDefaultPalettes() {
         return [
             {
-                name: "Vibrante",
+                name: "Vibrant",
                 colors: [
                     { bg: "#FF6B6B", text: "#FFFFFF" },
                     { bg: "#4ECDC4", text: "#FFFFFF" },
@@ -335,7 +335,7 @@ class AvatarGenerator {
                 ]
             },
             {
-                name: "Profissional",
+                name: "Professional",
                 colors: [
                     { bg: "#2C3E50", text: "#FFFFFF" },
                     { bg: "#34495E", text: "#FFFFFF" },
@@ -346,7 +346,7 @@ class AvatarGenerator {
                 ]
             },
             {
-                name: "Natureza",
+                name: "Nature",
                 colors: [
                     { bg: "#27AE60", text: "#FFFFFF" },
                     { bg: "#2ECC71", text: "#FFFFFF" },
@@ -357,7 +357,7 @@ class AvatarGenerator {
                 ]
             },
             {
-                name: "Quente",
+                name: "Warm",
                 colors: [
                     { bg: "#E74C3C", text: "#FFFFFF" },
                     { bg: "#C0392B", text: "#FFFFFF" },
@@ -379,7 +379,7 @@ class AvatarGenerator {
                 ]
             },
             {
-                name: "Escuro",
+                name: "Dark",
                 colors: [
                     { bg: "#1A1A1A", text: "#FFFFFF" },
                     { bg: "#2D2D2D", text: "#FFFFFF" },
@@ -427,7 +427,7 @@ class AvatarGenerator {
             paletteElement.className = 'palette';
             paletteElement.dataset.paletteIndex = index;
             
-            const isCustom = true; // Todas as paletas podem ser editadas
+            const isCustom = true; // All palettes can be edited
             
             paletteElement.innerHTML = `
                 <div class="palette-name">${palette.name}</div>
@@ -436,7 +436,7 @@ class AvatarGenerator {
                         `<div class="palette-color" style="background: ${color.bg}; border-color: ${color.text};"></div>`
                     ).join('')}
                 </div>
-                ${isCustom ? '<button class="palette-edit-btn" title="Editar paleta">✎</button>' : ''}
+                ${isCustom ? '<button class="palette-edit-btn" title="Edit palette">✎</button>' : ''}
             `;
             
             
@@ -492,7 +492,7 @@ class AvatarGenerator {
 
     showPaletteModal() {
         this.paletteModal.style.display = 'flex';
-        document.getElementById('palette-creator-title').textContent = 'Criar Nova Paleta';
+        document.getElementById('palette-creator-title').textContent = 'Create New Palette';
         this.paletteNameInput.value = '';
         this.editingPaletteIndex = undefined;
         this.colorInputs.innerHTML = '';
@@ -508,11 +508,11 @@ class AvatarGenerator {
         const colorRow = document.createElement('div');
         colorRow.className = 'color-input-row';
         colorRow.innerHTML = `
-            <span class="color-input-label">Fundo:</span>
+            <span class="color-input-label">Background:</span>
             <input type="color" class="color-input" value="${bgColor}">
-            <span class="color-input-label">Texto:</span>
+            <span class="color-input-label">Text:</span>
             <input type="color" class="text-color-input" value="${textColor}">
-            <button class="remove-color-btn" onclick="this.parentElement.remove()" title="Remover cor">×</button>
+            <button class="remove-color-btn" onclick="this.parentElement.remove()" title="Remove color">×</button>
         `;
         this.colorInputs.appendChild(colorRow);
     }
@@ -520,13 +520,13 @@ class AvatarGenerator {
     saveCustomPalette() {
         const name = this.paletteNameInput.value.trim();
         if (!name) {
-            alert('Por favor, digite um nome para a paleta!');
+            alert('Please enter a name for the palette!');
             return;
         }
 
         const colorRows = this.colorInputs.querySelectorAll('.color-input-row');
         if (colorRows.length === 0) {
-            alert('Por favor, adicione pelo menos uma cor!');
+            alert('Please add at least one color!');
             return;
         }
 
@@ -542,7 +542,7 @@ class AvatarGenerator {
             
             if (isDefaultPalette) {
                 // If editing a default palette, create a new custom one
-                const newPalette = { name: name + ' (Editada)', colors };
+                const newPalette = { name: name + ' (Edited)', colors };
                 this.palettes.push(newPalette);
             } else {
                 // If editing a custom palette, update it
@@ -576,8 +576,8 @@ class AvatarGenerator {
         const isDefaultPalette = index < defaultPalettes.length;
         
         this.paletteModal.style.display = 'flex';
-        document.getElementById('palette-creator-title').textContent = isDefaultPalette ? 'Editar Paleta (Criará uma cópia)' : 'Editar Paleta';
-        this.paletteNameInput.value = isDefaultPalette ? palette.name + ' (Editada)' : palette.name;
+        document.getElementById('palette-creator-title').textContent = isDefaultPalette ? 'Edit Palette (Will create a copy)' : 'Edit Palette';
+        this.paletteNameInput.value = isDefaultPalette ? palette.name + ' (Edited)' : palette.name;
         
         this.colorInputs.innerHTML = '';
         palette.colors.forEach(color => {
@@ -589,11 +589,11 @@ class AvatarGenerator {
         const colorRow = document.createElement('div');
         colorRow.className = 'color-input-row';
         colorRow.innerHTML = `
-            <span class="color-label">Fundo:</span>
+            <span class="color-label">Background:</span>
             <input type="color" class="color-input" value="${bgColor}">
-            <span class="color-label">Texto:</span>
+            <span class="color-label">Text:</span>
             <input type="color" class="text-color-input" value="${textColor}">
-            <button class="remove-color-btn" onclick="this.parentElement.remove()" title="Remover cor">×</button>
+            <button class="remove-color-btn" onclick="this.parentElement.remove()" title="Remove color">×</button>
         `;
         this.colorInputs.appendChild(colorRow);
     }
@@ -615,7 +615,7 @@ class AvatarGenerator {
         
         this.progressSection.style.display = 'block';
         this.generateAllBtn.disabled = true;
-        this.generateAllBtn.textContent = 'Gerando...';
+        this.generateAllBtn.textContent = 'Generating...';
 
         const range = document.querySelector('input[name="range"]:checked').value;
         let avatarsToGenerate = [];
@@ -665,7 +665,7 @@ class AvatarGenerator {
             
             // Update progress
             const progress = ((i + 1) / avatarsToGenerate.length) * 100;
-            this.progressText.textContent = `Gerando avatar: ${text}`;
+            this.progressText.textContent = `Generating avatar: ${text}`;
             this.progressCount.textContent = `${i + 1}/${avatarsToGenerate.length}`;
             this.progressFill.style.width = `${progress}%`;
         }
@@ -679,8 +679,8 @@ class AvatarGenerator {
             // Finished
             this.isGenerating = false;
             this.generateAllBtn.disabled = false;
-            this.generateAllBtn.textContent = 'Gerar Todos os Avatares';
-            this.progressText.textContent = `Concluído! ${avatarsToGenerate.length} avatares gerados`;
+            this.generateAllBtn.textContent = 'Generate All Avatars';
+            this.progressText.textContent = `Completed! ${avatarsToGenerate.length} avatars generated`;
             this.displayGeneratedAvatars();
         }
     }
@@ -751,12 +751,12 @@ class AvatarGenerator {
         const statsDiv = document.createElement('div');
         statsDiv.className = 'generation-stats';
         statsDiv.innerHTML = `
-            <h4>Estatísticas da Geração</h4>
-            <p><strong>Total de avatares:</strong> ${this.generatedAvatars.length}</p>
-            <p><strong>Formato:</strong> ${this.currentShape}</p>
-            <p><strong>Tamanho:</strong> ${this.currentSize}x${this.currentSize}px</p>
-            <p><strong>Fonte:</strong> ${this.currentFont}</p>
-            <p><strong>Paleta:</strong> ${this.currentPalette ? this.currentPalette.name : 'Nenhuma'}</p>
+            <h4>Generation Statistics</h4>
+            <p><strong>Total avatars:</strong> ${this.generatedAvatars.length}</p>
+            <p><strong>Shape:</strong> ${this.currentShape}</p>
+            <p><strong>Size:</strong> ${this.currentSize}x${this.currentSize}px</p>
+            <p><strong>Font:</strong> ${this.currentFont}</p>
+            <p><strong>Palette:</strong> ${this.currentPalette ? this.currentPalette.name : 'None'}</p>
         `;
         this.generatedAvatarsSection.appendChild(statsDiv);
     }
@@ -786,7 +786,7 @@ class AvatarGenerator {
 
     async downloadSingle() {
         if (!this.currentText.trim()) {
-            alert('Por favor, digite um texto para o avatar!');
+            alert('Please enter text for the avatar!');
             return;
         }
 
@@ -824,16 +824,16 @@ class AvatarGenerator {
 
     updateDownloadButtonText() {
         const format = this.downloadFormat.toUpperCase();
-        this.downloadSingleBtn.textContent = `Baixar Preview (${format})`;
+        this.downloadSingleBtn.textContent = `Download Preview (${format})`;
     }
 
     async downloadZip() {
         if (this.generatedAvatars.length === 0) {
-            alert('Por favor, gere pelo menos um avatar antes de baixar o ZIP!');
+            alert('Please generate at least one avatar before downloading the ZIP!');
             return;
         }
 
-        this.downloadZipBtn.innerHTML = '<span class="loading"></span> Gerando ZIP...';
+        this.downloadZipBtn.innerHTML = '<span class="loading"></span> Generating ZIP...';
         this.downloadZipBtn.disabled = true;
 
         try {
@@ -888,10 +888,10 @@ class AvatarGenerator {
             
             URL.revokeObjectURL(link.href);
         } catch (error) {
-            console.error('Erro ao gerar ZIP:', error);
-            alert('Erro ao gerar o arquivo ZIP. Tente novamente.');
+            console.error('Error generating ZIP:', error);
+            alert('Error generating ZIP file. Please try again.');
         } finally {
-            this.downloadZipBtn.innerHTML = 'Baixar ZIP';
+            this.downloadZipBtn.innerHTML = 'Download ZIP';
             this.downloadZipBtn.disabled = false;
         }
     }

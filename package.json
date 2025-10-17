@@ -1,7 +1,7 @@
 {
   "name": "avatar-generator",
   "version": "1.0.0",
-  "description": "Um gerador de avatares moderno e interativo que cria avatares personalizados com letras, cores e paletas predefinidas",
+  "description": "A modern and interactive avatar generator that creates custom avatars with letters, colors and predefined palettes",
   "main": "index.html",
   "scripts": {
     "start": "python -m http.server 8000",
